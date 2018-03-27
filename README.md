@@ -1,3 +1,4 @@
+readme
 [![Build Status](https://travis-ci.org/sqshq/PiggyMetrics.svg?branch=master)](https://travis-ci.org/sqshq/PiggyMetrics)
 [![codecov.io](https://codecov.io/github/sqshq/PiggyMetrics/coverage.svg?branch=master)](https://codecov.io/github/sqshq/PiggyMetrics?branch=master)
 [![GitHub license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/sqshq/PiggyMetrics/blob/master/LICENCE)
@@ -25,10 +26,10 @@ Contains general user input logic and validation: incomes/expenses items, saving
 Method	| Path	| Description	| User authenticated	| Available from UI
 ------------- | ------------------------- | ------------- |:-------------:|:----------------:|
 GET	| /accounts/{account}	| Get specified account data	|  | 	
-GET	| /accounts/current	| Get current account data	| × | ×
-GET	| /accounts/demo	| Get demo account data (pre-filled incomes/expenses items, etc)	|   | 	×
-PUT	| /accounts/current	| Save current account data	| × | ×
-POST	| /accounts/	| Register new account	|   | ×
+GET	| /accounts/current	| Get current account data	| Ã— | Ã—
+GET	| /accounts/demo	| Get demo account data (pre-filled incomes/expenses items, etc)	|   | 	Ã—
+PUT	| /accounts/current	| Save current account data	| Ã— | Ã—
+POST	| /accounts/	| Register new account	|   | Ã—
 
 
 #### Statistics service
@@ -37,8 +38,8 @@ Performs calculations on major statistics parameters and captures time series fo
 Method	| Path	| Description	| User authenticated	| Available from UI
 ------------- | ------------------------- | ------------- |:-------------:|:----------------:|
 GET	| /statistics/{account}	| Get specified account statistics	          |  | 	
-GET	| /statistics/current	| Get current account statistics	| × | × 
-GET	| /statistics/demo	| Get demo account statistics	|   | × 
+GET	| /statistics/current	| Get current account statistics	| Ã— | Ã— 
+GET	| /statistics/demo	| Get demo account statistics	|   | Ã— 
 PUT	| /statistics/{account}	| Create or update time series datapoint for specified account	|   | 
 
 
@@ -47,12 +48,12 @@ Stores users contact information and notification settings (like remind and back
 
 Method	| Path	| Description	| User authenticated	| Available from UI
 ------------- | ------------------------- | ------------- |:-------------:|:----------------:|
-GET	| /notifications/settings/current	| Get current account notification settings	| × | ×	
-PUT	| /notifications/settings/current	| Save current account notification settings	| × | ×
+GET	| /notifications/settings/current	| Get current account notification settings	| Ã— | Ã—	
+PUT	| /notifications/settings/current	| Save current account notification settings	| Ã— | Ã—
 
 #### Notes
 - Each microservice has it's own database, so there is no way to bypass API and access persistance data directly.
-- In this project, I use MongoDB as a primary database for each service. It might also make sense to have a polyglot persistence architecture (сhoose the type of db that is best suited to service requirements).
+- In this project, I use MongoDB as a primary database for each service. It might also make sense to have a polyglot persistence architecture (Ñ�hoose the type of db that is best suited to service requirements).
 - Service-to-service communication is quite simplified: microservices talking using only synchronous REST API. Common practice in a real-world systems is to use combination of interaction styles. For example, perform synchronous GET request to retrieve data and use asynchronous approach via Message broker for create/update operations in order to decouple services and buffer messages. However, this brings us to the [eventual consistency](http://martinfowler.com/articles/microservice-trade-offs.html#consistency) world.
 
 ## Infrastructure services
